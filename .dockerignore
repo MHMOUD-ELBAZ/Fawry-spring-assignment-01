@@ -1,0 +1,26 @@
+# Ignore Maven build output (we only need final jar)
+target/
+
+# Git stuff
+.git
+.gitignore
+
+# IDE/project files
+.idea
+.vscode
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Docker itself
+docker-compose.yml
+Dockerfile*
+
+# Node.js frontend (if present in same repo)
+node_modules/
+dist/

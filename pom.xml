@@ -44,6 +44,7 @@
 	</dependencies>
 
 	<build>
+        <finalName>spring-assignment-01</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
