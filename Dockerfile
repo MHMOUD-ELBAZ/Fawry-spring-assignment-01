@@ -4,6 +4,8 @@ FROM eclipse-temurin:24-jre-alpine
 # 2. Set a working directory inside the container
 WORKDIR /app
 
+RUN ls -R /app
+
 # 3. Copy the JAR file into the container
 COPY target/*.jar app.jar
 

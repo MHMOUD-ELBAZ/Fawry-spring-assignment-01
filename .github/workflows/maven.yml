@@ -44,13 +44,12 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - run: ls -R target
+    - run: ls -R .
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
         context: .
-        file: ./Dockerfile
         push: true
         # This tells the workflow to push two tags for every build:
         tags: |
