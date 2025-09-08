@@ -1,6 +1,8 @@
 package demo.services;
 
 import demo.entities.Employee;
+import demo.exception.BadRequestException;
+import demo.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 import demo.repositories.EmployeeRepo;
 
@@ -16,16 +18,16 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public Employee findById(int id) {
-        return employeeRepo.findById(id).orElseThrow(() -> new RuntimeException("no employee with id = " + id));
+        return employeeRepo.findById(id).orElseThrow(() -> new NotFoundException("no employee with id = " + id));
     }
 
     @Override
     public void add(Employee employee) {
         if(employee.getName() == null || employee.getName().trim().isEmpty())
-            throw new RuntimeException("name can't be null");
+            throw new BadRequestException("name can't be null");
 
         if(employeeRepo.findById(employee.getId()).isPresent())
-            throw new RuntimeException("an employee exists with the same id");
+            throw new BadRequestException("an employee exists with the same id");
 
         employeeRepo.add(employee);
     }
@@ -33,5 +35,10 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public List<Employee> getAll() {
         return employeeRepo.getAll();
+    }
+
+    @Override
+    public void delete(int id) {
+        employeeRepo.delete(findById(id));
     }
 }

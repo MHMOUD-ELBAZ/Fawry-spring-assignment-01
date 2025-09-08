@@ -9,4 +9,5 @@ public interface EmployeeRepo {
     Optional<Employee> findById(int id);
     void add(Employee employee);
     List<Employee> getAll();
+    void delete(Employee employee);
 }

@@ -36,4 +36,9 @@ public class EmployeeRepoImpl implements EmployeeRepo {
     public List<Employee> getAll() {
         return employees.stream().toList(); //immutable
     }
+
+    @Override
+    public void delete(Employee employee) {
+        employees.remove(employee);
+    }
 }
