@@ -1,5 +1,6 @@
 # Ignore Maven build output (we only need final jar)
-target/
+target/*
+!target/*.jar
 
 # Git stuff
 .git
