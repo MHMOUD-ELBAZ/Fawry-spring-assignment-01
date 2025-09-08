@@ -7,7 +7,7 @@ WORKDIR /app
 RUN ls -R /app
 
 # 3. Copy the JAR file into the container
-COPY target/*.jar app.jar
+COPY target/spring-assignment-01.jar app.jar
 
 # 4. Expose port (Spring Boot default is 8080)
 EXPOSE 8080
