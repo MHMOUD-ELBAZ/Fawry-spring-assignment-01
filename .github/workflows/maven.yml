@@ -16,25 +16,26 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up JDK 24
+
+    - name: Set up JDK
       uses: actions/setup-java@v4
       with:
-        java-version: '24'
+        java-version: '24'   # use 17 or 21 (LTS)
         distribution: 'temurin'
         cache: maven
+
     - name: Build with Maven
       run: mvn -B package --file pom.xml -Dmaven.test.skip=true
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4.6.2
+
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
       with:
-        # Artifact name
-        name: spring-assignment-01
-        # A file, directory or wildcard pattern that describes what to upload
-        path: /home/runner/work/Fawry-spring-assignment-01/Fawry-spring-assignment-01/target/spring-assignment-01-0.0.1-SNAPSHOT.jar
+        name: spring-assignment-01-${{ github.sha }}
+        path: target/*.jar
+
 
 
